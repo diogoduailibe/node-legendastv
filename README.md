@@ -11,7 +11,7 @@ $ npm install node-legendastv
 ## API
 
 ```js
-var legendastv = require('legendastv')
+var legendastv = require('node-legendastv')
 ```
 
 ### search(termo, opts, cb)
@@ -46,7 +46,7 @@ var legendastv = require('legendastv')
 ## Example
 
 ```js
-var legendastv = require('legendastv');
+var legendastv = require('node-legendastv');
 
 legendastv.search('game of thrones S04E01', function(err, results) {
   if (err) {
