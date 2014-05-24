@@ -1,0 +1,32 @@
+{
+  "name": "node-legendastv",
+  "version": "0.0.1",
+  "description": "Node.js client for legendas.tv",
+  "homepage": "http://github.com/diogoduailibe/node-legendastv",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/diogoduailibe/node-legendastv.git"
+  },
+  "author": {
+    "name": "Diogo Duailibe",
+    "email": "dioduailibe@gmail.com"
+  },
+  "main": "./index.js",
+  "dependencies": {
+    "validator": "3.12.0",
+    "cheerio": "0.16.0",
+    "async": "0.9.0",
+    "request": "2.36.0"
+  },
+  "keywords": [
+    "legendastv",
+    "legendas.tv",
+    "legenda",
+    "subtitle",
+    "client"
+  ],
+  "engines": {
+    "node": ">= 0.8"
+  },
+  "license": "MIT"
+}
