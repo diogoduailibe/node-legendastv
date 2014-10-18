@@ -154,12 +154,17 @@ function parseResults(termo,resultsHTML,opts, cb) {
                     item.upload.hora = $1('.hour').text();
                     item.upload.usuario = $1('.nume > a').text();
                     item.numero_downloads = $1('.number').text();
-
-                    cb(undef,item);
                 }
-                else cb(err);
+                else{
+                    item.linkLegenda = undef;
+                }
+
+                cb(undef,item);
+
             });
         }
+        else cb(undef,item);
+
     },function(err,results){
         if (!err) {
             results = results.filter(function (item) {
