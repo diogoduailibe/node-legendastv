@@ -1,6 +1,6 @@
 {
   "name": "node-legendastv",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Node.js client for legendas.tv",
   "homepage": "http://github.com/diogoduailibe/node-legendastv",
   "repository": {
