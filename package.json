@@ -13,10 +13,10 @@
   },
   "main": "./index.js",
   "dependencies": {
-    "validator": "3.12.0",
-    "cheerio": "0.16.0",
-    "async": "0.9.0",
-    "request": "2.36.0"
+    "async": "^3.2.0",
+    "cheerio": "^1.0.0-rc.5",
+    "needle": "^2.6.0",
+    "validator": "^13.5.2"
   },
   "keywords": [
     "legendastv",
