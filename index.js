@@ -1,7 +1,7 @@
 var validator = require('validator')
     ,cheerio = require('cheerio')
     ,async = require('async')
-    ,request = require('request')
+    ,needle = require('needle')
     ,baseUrl = 'legendas.tv'
     ,protocol = "http://"
     ,baseSearchUrl = protocol + baseUrl + '/util/carrega_legendas_busca/'
@@ -38,6 +38,7 @@ var validator = require('validator')
 
  */
 
+
 exports.search = function(termo, opts, cb) {
     var url = ''+baseSearchUrl;
 
@@ -48,7 +49,7 @@ exports.search = function(termo, opts, cb) {
 
     opts = opts || {};
 
-    if (termo && !validator.isNull(termo) && termo!==''){
+    if (termo && !validator.isEmpty(termo) && termo!==''){
         url += '/' + termo;
     }
     else{
@@ -70,7 +71,7 @@ exports.search = function(termo, opts, cb) {
 
     if (opts && opts!== null && opts.tipo_legenda){
         var tipo_legenda = opts.tipo_legenda;
-        if (!validator.isNull(tipo_legenda) && (tipo_legenda === 'd' || tipo_legenda === 'p')){
+        if (!validator.isEmpty(tipo_legenda) && (tipo_legenda === 'd' || tipo_legenda === 'p')){
             url += '/' + tipo_legenda;
         }
         else{
@@ -93,15 +94,13 @@ exports.search = function(termo, opts, cb) {
 };
 
 function parsePage(url, termo, opts, parse, cb) {
-    var query = {
-        url:url
-    };
+    var query = url
 
     if (opts && opts!== null && opts.proxy){
         query.proxy = opts.proxy;
     }
 
-    request(query,function(err,resp,body){
+    needle.get(query,function(err,resp,body){
         if (!err){
             parse(termo,body,opts,cb);
         }
@@ -139,14 +138,12 @@ function parseResults(termo,resultsHTML,opts, cb) {
             item.idioma = $(item.parent).find('img').attr('title');
             delete item.parent;
 
-            var query = {
-                url:item.link
-            };
+            var query = item.link
 
             if (opts && opts!== null && opts.proxy){
                 query.proxy = opts.proxy;
             }
-            request(query,function(err,resp,body){
+            needle.get(query,function(err,resp,body){
                 if (!err){
                     $1 = cheerio.load(body);
                     item.upload = {};
